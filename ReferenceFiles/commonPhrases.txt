@@ -12,10 +12,15 @@ a bad
 a right
 a wrong way
 a wrong
+is an
+is a
+good boy
+good girl
 Good idea
 It’s a
 That’s a
 good idea
+bad idea
 agree with
 a little help
 a little money
@@ -23,6 +28,15 @@ a little sugar
 a lot
 a lot to
 a lot of
+is a good
+is a bad
+is a wrong
+is a right
+he is a
+i am a
+i am
+she is a
+they are
 all night
 all over
 the world
@@ -30,6 +44,88 @@ anything else
 anyone else
 a period of
 arrive in
+why he
+why she
+why they
+asked you
+he asked you
+she asked you
+he asked her
+i asked you
+they asked me
+you asked me
+he asked
+she asked
+i asked
+they asked
+they asked you
+why he asked
+why they asked
+why she asked
+why me
+why i
+why he
+you to
+he to
+she to
+me to
+is everything
+how is
+how could
+how can
+everything going
+have to
+had to
+to work
+to school
+to home
+to go to
+it is
+it is a
+it is an
+a boy
+a man
+a girl
+a man
+a women
+a cat
+a dog
+a school
+a job
+a work
+to go
+go to
+for here
+i have
+he has
+she has
+they have
+what is
+am not
+he is not
+she is not
+is not
+of it
+afraid of
+is your
+have to go
+have to do
+school day
+how is everything
+why he
+why she
+why they
+asked you to
+ask you
+ask you to
+why he asked
+do that
+do this
+you to do
+he to
+she to
+she to do
+he to do
 ask for
 at home
 at school
@@ -118,7 +214,7 @@ he or she
 high school
 his or her
 How about
-How are you?
+How are you
 How long
 How many
 How much
@@ -179,9 +275,9 @@ look at
 look for
 look like
 lots of
-millions of...
+millions of
  mobile phone
-more than...
+more than
 next time
 next year
 next month
@@ -293,7 +389,7 @@ a couple of
 Tell me all
 all kinds of
 all over
-all over the world
+over the world
 all sorts of
 all the time
 a long time
@@ -312,14 +408,14 @@ at the age
 at the start
 at that time
 at the top
-based on sth
+based on
 allowed to do
 allowed to
 belong to
 be made of
 by the end
 carry on
-carry on with sth
+carry on with
 carry out
 check in at
 check in
@@ -341,7 +437,6 @@ except for
 fall in love
 fall in
 fall off
-fall off sth
 far away
 feel good
 feel like
@@ -352,10 +447,11 @@ get back
 get better
 get lost
 get out
-get out of sth
+get out of
 give up
 get help
-go away go down
+go away
+go down
 Prices are
 go down
 Go down the
@@ -364,7 +460,8 @@ go for a
 go up
 Prices are
 good luck
-have a look at sth
+have a look
+look at
 have got to
 Have you ever
 if necessary
@@ -384,7 +481,7 @@ in some cases
 in the air
 in the end
 in the middle
-in the middle of sth
+middle of
 in the same way
 in this way
 it depends
@@ -400,7 +497,8 @@ look back
 look up
 make sure of
 make sure that
-much better not at all
+much better
+not at all
 I didn’t enjoy
 I didn't
 no way
@@ -424,34 +522,43 @@ pick them up
 pick he up
 pick she up
 quite a lot
-quite a lot of
-reasons why refer to
+a lot of
+why refer to
 reasons why
 refer to
 report on
-What sorts of things do you do
+What sorts of
+things do you
 sound like
 start with
-such a good idea
-take care of sb/sth/yourself take off
-take sth off
+such a
+good idea
+take care of
+take off
 take part
 take part in
 take place
+best thing
 the best thing
-the best thing to do
+to do
 the first thing
-the first thing I did
+the first thing
+i did
+thing i did
 the following
 the following day
 the important thing
-the most important thing
-the other side of
-the other side of the world
-the rest of sth
-the rest of the world
-these days they say
-They say you can’t buy happiness
+the most important
+other side of
+the other side
+of the world
+the rest of
+of the world
+these days they
+they say
+they said
+They say you
+can’t buy happiness
 throw it away
 turn it off
 turn it on
@@ -463,229 +570,394 @@ worried about you
 worried about her
 worried about he
 a bit more
-a bit of sth access to sth after all
+a bit of
+access to
+after all
+a great
+a good
+a bad
+deal better
 a great deal
-a great deal better
-a great deal of sth
 aim to do
-I had a kind of feeling this might happen
+I had a
+kind of feeling
+this might happen
 a little bit
 a little more
 apart from
 a range of
 a wide range of
 as if
-as if nothing had happened
+as if nothing
+had happened
 as much as
-as soon as possible at last
+as soon as
+possible at
 at risk
 at times
-attached to sb/sth a variety of sth
-be about to do sth
+attached to
+a variety of
+about to
 going on
 What’s going on
-be known as sb/sth benefit from sth
+known as
+benefit from
 supposed to do
 supposed to be
 break up
 break up with
 by the time
-can’t afford to do sth
+can’t afford to
 care for he
 care for me
 care for her
 clean up
 click on
-come up with sth compared with sth concentrate on sth consist of sb/sth decide on sth depending on developing countries due to sb/sth economic growth end up
+come up with
+compared with
+concentrate on
+consist of
+decide on
+depending on
+developing countries
+due to
+economic growth
+end up
 even if
 even though
-exactly the same experience in
+exactly the same
+experience in
 fail to do
 fall asleep
 far more
 far more important
 far more opportunities
 far too
-far too much homework
+far too
+much homework
 fed up
-for a while for free
-for instance for life
-a job for life
+for a while
+for free
+for instance
+for life
+a job for
 for long
-for some time get on with sb get to know sb get used to sth
-get used to doing sth
-global warming go ahead
+for some time
+get on with
+get to know
+get used to
+get used to
+global warming
 go ahead with
 go ahead
 go wrong
 growth in
 have no idea
-have something in common
-have nothing in common
+in common
+have nothing
+have nothing in
+have something in
+have something
 hear of
 in addition
 in addition to
-in a way that
+in a way
+a way that
 in case
 just in case
-in charge of sb/sth in contrast
-in contrast to sb/sth
-in favour of sb/sth in general
-in order of sth
-in order to do sth in other words
+in charge of
+in contrast
+in contrast to
+in favour of
+in general
+in order of
+in order to
+in other words
 in particular
 in public
 in recent years
 in response to
 in terms of
-in the case of
-in the form of
+in the case
+the case of
+the form of
+in the form
 in time
-in time for sth
-in time to do sth
+in time for
+in time to
 in touch
 be in touch
-get in touch keep in touch in touch with sb
+get in touch
+keep in touch
+in touch with
 I wonder if
-leave sb/sth out likely to do sth look forward to sth look out
-make a difference make sth up manage to do sth mean to do sth
-I didn’t mean to
-more and more move on
-move on to sth
+leave me out
+likely to do
+look forward
+look out
+make a difference
+manage to
+mean to do
+I didn’t mean
+did not mean
+i did not
+not mean
+more and more
+move on
+move on to
 no longer
 not any longer
 no more than
-I didn’t even see it
-not necessarily not only
+I didn’t even
+see it
+not necessarily
+not only
 not only
 but also
-on a regular basis on my own
+on a regular
+regular basis
+on my own
 on their own
 on your own
-on the other hand on the street
+on the other
+the other hand
+hand on the
+on the street
 on the streets
-on the way or something
+on the way
+or something
 or somebody
 or somewhere
 or two
-a day or two
-a moment or two a pound or two
+a day or
+a day
+a moment or
 ought to
-out there over the years over time
-participate in sth point of view point out
-point sth out
+out there
+over the years
+over time
+over the
+participate in
+point of view
+of view
 point out that
-prepared to do sth primary school prime minister
-put sth up
+point out
+prepared to
+primary school
+prime minister
+put up
 quite a
-quite a good player
-quite a long time
+quite a good
+good player
+quite a long
+a long
+a long way
 raise money
-raise money for sth
-rather than reaction to sth relate to sth/sb
-relating to sth/sb
-related to sth/sb respect for sb/sth result in sth
+raise money for
+money for
+rather than
+reaction to
+relate to
+relating to
+related to
+respect for
+result in
 rise in sth
-a rise in the number of visitors
+a rise in
+in the number
+of visitors
+number of visitors
 run out
-run out of sth
-search engine secondary school set sth up
+run out of
+out of
+search engine
+secondary school
+set up
 slow down
 so far
-some kind of succeed in doing
-sure to do sth
-take sb/sth on
-take up sth
-take up too much room
-take sth up
+some kind of
+succeed in doing
+sure to do
+sure to
+take on
+take up too
+much room
+take up
 take up golf
-tell the truth tend to do sth
-tend to be sth
-thanks to sb/sth that’s it
+tell the truth
+tend to
+tell the
+tell a
+tend to
+thanks to
+that’s it
 the case
 the case that
 the fact that
-There are those who say
-to do with sb/sth
-be to do with sb/sth
-have to do with sb/sth
-together with too bad
-try and turn out
-turn out to be sth
-turn sth up unable to do sth up to sth
-up to 60 miles per hour
+There are
+those who
+who said
+do with
+to do with
+have to do
+he has to
+i have to
+she has to
+together with
+too bad
+try and
+turn out
+turn out
+to be
+turn it up
+unable to
+up to
+up to
+miles per hour
 way of life
 well known
 work on
 work it out
-a bit of a... account for sth accused of sth
-act as sth
-aimed at sb
-aimed at doing sth all the way
-a means of sth
-a means of communication
-a means of transport
-appeal to sb
-apply to sb/sth
+a bit of
+account for
+accused of
+act as
+aimed at
+all the way
+means of sth
+means of communication
+means of transport
+appeal to
+apply to
 as a whole
-as far as I am concerned as follows
-as for sb/sth
-as long as... associated with sth
-associated with doing sth
+as far as
+I am
+i am concerned
+he is concerned
+concerned as follows
+as for
+as long as
+associated with
+associated with
 as though
 at once
 at present
 at some point
-at the end of the day at this point
-at this stage awareness of sth back sb/sth up
-be charged with sth
-be charged with doing sth
-be derived from sth
-be expected to do sth be known to do sth
-be made up of sth
-be surrounded by sb/sth be to blame
-is to blame for
+at the end
+of the day
+at this point
+at this stage
+awareness of
+back up
+charged with
+derived from
+expected to
+known to
+known to do
+made up of
+make up
+made up
+surrounded by
+to blame
+is to
+blame for
 both sides
 both sides of the argument
+of the argument
+the argument
 on both sides
 bound to do
 bound to be
-bring sb up
+bring me up
+bring up
 by now
 call for
 case study
-come across sb/sth come true
-a dream come true
-concerned about sth concerned with sth confidence in sb/sth contribute to sth control over sb/sth cope with sth decline in sth
-a decline in student numbers
-dependent on sb/sth despite the fact that
-draw attention to sb/sth engage in sth
+come across
+come true
+dream come true
+a dream
+a dream come
+concerned about
+concerned with
+confidence in
+contribute to
+control over
+cope with
+decline in
+a decline
+student numbers
+in student numbers
+dependent on
+despite the
+despite the fact
+fact that
+draw attention to
+engage in
+draw attention
 engaged in
 ever since
-exposure to sth far from sth
-far from doing sth
+exposure to
+far from
+far from doing
 figure sb/sth out
-find yourself doing sth get in
-get into sth
-The train got in late
-get over sth/sb
-You’ll get over it
-get rid of sb/sth go off
-She went off to get a drink. A bomb went off.
-The alarm went off
-The lights went off
-go on to do sth go through sth had better hang on human being human rights if only...
-I have to say
+find yourself
+doing it
+get in
+get into it
+The train
+train is late
+train got in
+train was late
+got in late
+get over
+get over it
+You will
+he will
+i will
+they will
+get over it
+get rid of
+go off
+She went
+to get a
+get a drink
+A bomb
+bomb went off.
+The alarm
+alarm went off
+The lights
+went off
+lights went off
+go on
+go through
+had better
+hang on
+human being
+human rights
+if only
+I have to
+have to say
+to say
+to do
+to play
 in action
 in advance
-in an attempt to do sth in part
+in an attempt
+to do
+in part
 in place
-in relation to sb/sth in spite of sth
+in relation to
+in spite of
 in the first place
-in the near future in turn
-investment in sth
+in the near
+future in
+the near future
+investment in
 I would say
-loads of sb/sth mental health more or less
+loads of
+mental health
+more or less
 no doubt
 no matter
 no matter how
@@ -694,96 +966,142 @@ nothing but
 on board
 once again
 one another
-on the basis of sth on the one hand opposed to sth
+on the basis
+on the one
+the one hand
+opposed to sth
 or so
-other than potential for sth pretty much prior to
-prove to be sth put sth forward
-put sth together quality of life ranging from
-prices ranging from €25 to €60
-regarded as sth relevant to sb/sth rely on sb/sth role model
+other than
+potential for
+pretty much
+prior to
+prove to
+put forward
+put together
+quality of life
+quality of
+ranging from
+prices ranging from
+price range
+prices ranging
+regarded as
+relevant to
+rely on
+role model
 set out
 short of
-so as to do sth something like...
-sort sb/sth/yourself out stick to
-subject to sth
+so as to
+something like
+sort out
+stick to
+subject to
 sum up
-take advantage of sb/sth take sth into account take over
-take over from sb
+take advantage of
+take it into account
+into account
+take over
+take over from
 that is
-the vast majority of sth turn into sth
+the vast majority of
+turn into
 up to you
 up to me
 up to her
 up to he
-when it comes to sth
-when it comes to doing sth
-whether or not... would rather...
+when it
+when it comes
+whether or
+would rather
 above all
 all but
 all the more
-as far as he is concerned
-as far as you are concerned
+as far
+he is concerned
+as far as
+you are concerned
 as far as
 as opposed to
 as such
 as to sth
 as to how
 as to whether
-at the expense of sb/sth at the hands of sb
+at the expense
+at the hands
 back and forth
-bear sb/sth in mind
-bear in mind that... keep sb/sth in mind keep in mind that...
-be attributed to sb be entitled to sth
-be found to do sth be meant to do sth be reported to be sth
-be reported to have sth
-be said to be sth
-be said to have sth
-bring sth about bring sth up
-by means of sth
-by no means call on sb
+bear in mind
+keep in mind
+keep it in
+attributed to
+entitled to
+found to do
+meant to
+reported to
+reported to
+said to
+bring about
+by means of
+by no means
+call on
 call on sb to do sth
-consistent with sth dedicated to sth deprive sb/sth of sth dispose of sb/sth follow sth up
+consistent with
+dedicated to
+deprive him
+deprive her
+dispose of
+follow me
 for that matter
-for the benefit of sb for the sake of sb/sth get away with sth given that...
-have sb/sth in mind
-have sb/sth in mind for sth
-have nothing to do with sb/sth
-be nothing to do with sb/sth
-in accordance with sth
+for the benefit
+for the sake
+get away
+given that
+in mind
+in mind for
+have nothing to
+to do
+nothing to do
+in accordance with
 in any case
-in a position to do sth
-in conjunction with sb/sth in connection with sb/sth in effect
+in a position
+in conjunction
+connection with
+in effect
 in full
-in line with sth
+in line
 in practice
-in respect of sth
-in such a way (that)...
-in the absence of sb/sth in the course of...
-in the event of sth
-in the face of sth
-in the hands of sb
-in the light of sth
-in light of sth
+in respect of
+in such a
+in the absence
+in the course
+in the event
+in the face
+in the hands
+in the light
+in light of
+in light
 in the meantime
-in the midst of sth
-in the presence of sb
-in the presence of sth
+in the midst
+in the presence
+in the
 in the wake of sb/sth involvement in sth let alone
 little more than... live on sth
 may well
 nothing like
 not to mention
-on behalf of sb
-on the part of sb over the course of... put it
-How shall I put it?
-seek to do sth
-set to do sth
-the extent to which... to date
-his best work to date
-up against sth
-with regard to sb/sth
-with respect to sth
-with the exception of
+on behalf of
+on the part
+the course of
+How shall I
+put it
+seek to
+set to
+the extent
+to date
+his best work
+to date
+up against
+with regard to
+with respect to
+with the exception
 good guy
 good man
 good boy
