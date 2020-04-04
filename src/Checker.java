@@ -252,13 +252,17 @@ public class Checker {
             }
             phraseAverage=phraseAverage/phrases.size();
             score+=phraseAverage;
-            System.out.println("sentences:"+userInput+":"+score);
-            System.out.println("phrases :");
+            System.out.println("{");
+            System.out.println("  sentences: {\n    "+userInput+":"+score);
+            System.out.println("  },");
+            System.out.println("  phrases : {");
             for (Map.Entry<String,Integer> entry:phrases.entrySet())
-                System.out.println(entry.getKey()+":"+entry.getValue());
+                System.out.println("   "+entry.getKey()+":"+entry.getValue());
+            System.out.println("  }");
+            System.out.println("}");
             score=0;   //update the score
             phrases.clear();
-            System.out.println("----------------------------------------------------------");
+
 
         }
     }
