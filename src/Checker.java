@@ -175,14 +175,22 @@ public class Checker {
         }
     }
     static Checker c1 = new Checker();
+    static String[] sentenceCollection;
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter a sentence.");
-        System.out.println("Type 'quit' to exit.");
-        userInput = sc.nextLine();
-        userInNoPunc = userInput.replaceAll("[^a-zA-Z\\s]", "").replaceAll("\\s+", " ");
+        Scanner sentence = new Scanner(new File(args[0]));
+        ArrayList<String> sentenceList = new ArrayList<String>();
+        while (sentence.hasNextLine()) {
+            sentenceList.add(sentence.nextLine());
+        }
+        sentence.close();
+        String[] sentenceArray = sentenceList.toArray(new String[sentenceList.size()]);
+        for (int r=0;r<sentenceArray.length;r++) {
+            sentenceCollection = sentenceArray[r].split("(?<=[.!?])\\s*");
+        }
 
-        while (!userInput.equalsIgnoreCase("quit")){
+        for (int index=0;index<sentenceCollection.length;index++) {  //check the whole file
+            userInput=sentenceCollection[index];
+            userInNoPunc = userInput.replaceAll("[^a-zA-Z\\s]", "").replaceAll("\\s+", " ");
             Map<String,Integer> phrases=new HashMap<>();  //used to store different phrases of a sentence
             String[] userInArray = userInNoPunc.split(" "); //each word WITHOUT PUNCTUATION is an element
             String[] userInArray2 = userInput.split(""); //each character is an element
@@ -244,16 +252,14 @@ public class Checker {
             }
             phraseAverage=phraseAverage/phrases.size();
             score+=phraseAverage;
-            System.out.println("the score of your sentence is:"+score);
-            System.out.println("the scores of the phrases is:");
+            System.out.println("sentences:"+userInput+":"+score);
+            System.out.println("phrases :");
             for (Map.Entry<String,Integer> entry:phrases.entrySet())
                 System.out.println(entry.getKey()+":"+entry.getValue());
             score=0;   //update the score
+            phrases.clear();
             System.out.println("----------------------------------------------------------");
-            System.out.println("Please enter another sentence. Type 'quit' to exit.");
-            userInput = sc.nextLine();
-            userInNoPunc = userInput.replaceAll("[^a-zA-Z\\s]", "").replaceAll("\\s+", " ");
+
         }
-        sc.close();
     }
 }
