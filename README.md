@@ -1,7 +1,7 @@
 # language-correction
 
 
-## Demonstration
+## Sprint one Demonstration
 Type or copy the directory of the file to the text field and press 'confirm'.</br>
 You may use the simpleTest.txt that I provided.</br>
 
