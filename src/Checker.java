@@ -177,6 +177,8 @@ public class Checker {
     static Checker c1 = new Checker();
     static String[] sentenceCollection;
     public static void main(String[] args) throws IOException {
+        if (args.length<1)
+            System.out.println("Please choose a file in the program argument!");
         Scanner sentence = new Scanner(new File(args[0]));
         ArrayList<String> sentenceList = new ArrayList<String>();
         while (sentence.hasNextLine()) {
@@ -219,7 +221,7 @@ public class Checker {
                 c1.LastChar(lastWord);
             }
             else {
-                System.out.println("You entered " + userInArray.length + " words, which isn't accepted.");
+                System.out.println("The sentence has " + userInArray.length + " words, which isn't accepted.");
             }
 
             for (int i = 0; i < userInArray.length; i++){
