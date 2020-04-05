@@ -1,3 +1,7 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.*;
 import java.io.*;
 public class Checker {
@@ -10,6 +14,49 @@ public class Checker {
         this.arraylength2 = 0;
         this.score = 0;
     }
+
+
+    static class simpleGUI extends JFrame {  //a simple java GUI
+        private JButton normal;
+        private JButton normal2;
+        private JTextField textField1;
+        private JTextArea resultArea;
+
+        public simpleGUI(){
+            super("simple GUI");
+            setLayout(new FlowLayout());
+
+            textField1=new JTextField("please choose a directory",20); //the textfield
+            add(textField1);
+
+            normal=new JButton("confirm");  //the button to confirm
+            add(normal);
+            normal2=new JButton("show result");  //the button to show result
+            add(normal2);
+
+            resultArea= new JTextArea(40, 25);
+            add(resultArea);
+
+            normal.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent ae){
+                    directory= textField1.getText();
+                    signal=1;
+                    System.out.println("insideget:"+directory);
+
+                }
+            });
+
+            normal2.addActionListener(new ActionListener(){
+                public void actionPerformed(ActionEvent ae){
+                    if (signal2==1)
+                      resultArea.setText(collect.toString());
+                }
+            });
+        }
+
+    }
+
+
     public void FirstChar(String firstWord, int length) {
         if (firstWord.equals("")){
             score=100;             //empty word sentence zero point
@@ -174,12 +221,22 @@ public class Checker {
             score+=30; //no verb found
         }
     }
+    static int signal=0;  //set to 1, after we get the directory
+    static int signal2=0;  //set to 1,after we get the full result
+    static String directory="";
     static Checker c1 = new Checker();
     static String[] sentenceCollection;
-    public static void main(String[] args) throws IOException {
-        if (args.length<1)
-            System.out.println("Please choose a file in the program argument!");
-        Scanner sentence = new Scanner(new File(args[0]));
+    static StringBuilder collect=new StringBuilder();  //collect the output
+    public static void main(String[] args) throws IOException, InterruptedException {
+        simpleGUI myGUI = new simpleGUI();
+        myGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        myGUI.setSize(400,800);
+        myGUI.setVisible(true);
+
+        while (signal==0){
+            Thread.sleep(1000);
+        }
+        Scanner sentence = new Scanner(new File(directory));
         ArrayList<String> sentenceList = new ArrayList<String>();
         while (sentence.hasNextLine()) {
             sentenceList.add(sentence.nextLine());
@@ -254,18 +311,18 @@ public class Checker {
             }
             phraseAverage=phraseAverage/phrases.size();
             score+=phraseAverage;
-            System.out.println("{");
-            System.out.println("  sentences: {\n    "+userInput+":"+score);
-            System.out.println("  },");
-            System.out.println("  phrases : {");
+            collect.append("{\n");
+            collect.append("  sentences: {\n    "+userInput+":"+score+"\n");
+            collect.append("  },\n");
+            collect.append("  phrases : {\n");
             for (Map.Entry<String,Integer> entry:phrases.entrySet())
-                System.out.println("   "+entry.getKey()+":"+entry.getValue());
-            System.out.println("  }");
-            System.out.println("}");
+                collect.append("   " + entry.getKey() + ":" + entry.getValue()+"\n");
+            collect.append("  }");
+            collect.append("}\n");
             score=0;   //update the score
             phrases.clear();
-
-
         }
+        signal2=1;
+        System.out.println(collect.toString());
     }
 }
