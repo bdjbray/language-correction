@@ -155,6 +155,10 @@ come from
 come into
 He came into
 the room
+he play
+she play
+they play
+i play
 differences between
 it is difficult
 each other
@@ -167,6 +171,10 @@ family member
 find out
 find out about
 find out more
+he said
+she said
+they said
+I said
 for a long
 a long time
 for a moment
@@ -203,6 +211,11 @@ go to school
 go to work
 grow up
 Guess what
+good friend
+is my
+like it
+i do
+i do like
 half an hour
 hard wor
 have fun
@@ -240,6 +253,29 @@ in winter
 in the centre
 I live in
 the best
+is going
+going to
+he is going
+she is going
+to win
+to lose
+to do
+do my
+do her
+do he
+will do
+i will do
+she will do
+they will do
+my work
+his work
+her work
+their work
+my friend
+his friend
+her friend
+a friend
+good friend
 in the country
 in the future
 in the morning
@@ -346,6 +382,12 @@ there are
 there was
 there were
 think about
+is my
+is her
+is he
+is my friend
+is her friend
+is his friend
 This is my
 this kind of
 this morning
