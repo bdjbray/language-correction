@@ -23,10 +23,10 @@ public class Checker {
         private JTextArea resultArea;
 
         public simpleGUI(){
-            super("simple GUI");
+            super("checker");
             setLayout(new FlowLayout());
 
-            textField1=new JTextField("please choose a directory",20); //the textfield
+            textField1=new JTextField("please choose the directory",20); //the textfield
             add(textField1);
 
             normal=new JButton("confirm");  //the button to confirm
@@ -317,7 +317,7 @@ public class Checker {
             collect.append("  phrases : {\n");
             for (Map.Entry<String,Integer> entry:phrases.entrySet())
                 collect.append("   " + entry.getKey() + ":" + entry.getValue()+"\n");
-            collect.append("  }");
+            collect.append("  }\n");
             collect.append("}\n");
             score=0;   //update the score
             phrases.clear();
