@@ -41,8 +41,6 @@ public class Checker {
                 public void actionPerformed(ActionEvent ae){
                     directory= textField1.getText();
                     signal=1;
-                    System.out.println("insideget:"+directory);
-
                 }
             });
 
