@@ -4,29 +4,29 @@ import java.util.*;
 public class crawlerTextHandler {
 
     public static void main(String[] args) throws IOException {
-        File rawFile=new File("/Users/brayb/Downloads/andorid_java_work/java-workspace/test_check/ReferenceFiles/commonPhrases.txt");
-        Set<String> collectStr=new HashSet<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(rawFile))) {
-            String line;
-            while ((line = br.readLine()) != null) {
-                if (line.equals(""))
-                    continue;
-                collectStr.add(line);
-            }
+        String dir1="";
+        String dir2="";
+        FileReader fileReader = new FileReader(dir1);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String inputLine;
+        Set<String> lineList = new HashSet<>();
+        while ((inputLine = bufferedReader.readLine()) != null) {
+            lineList.add(inputLine);
         }
-        Object[] arr=collectStr.toArray();
+        fileReader.close();
+        Object[] arr=lineList.toArray();
+
         Arrays.sort(arr);
 
-        File txtFile=new File("/Users/brayb/Downloads/andorid_java_work/java-workspace/test_check/ReferenceFiles/Phrases.txt");
-        try {
-            FileWriter fileWriter=new FileWriter(txtFile);
-            for (int i=0;i<arr.length;i++){
-                String str=(String) arr[i];
-                fileWriter.write(str+"\n");
-            }
-        }catch (Exception e){
-            System.out.println("error");
+        FileWriter fileWriter = new FileWriter(dir2);
+        PrintWriter out = new PrintWriter(fileWriter);
+        for (Object outputLine : arr) {
+            String str=(String) outputLine;
+            out.println(str);
         }
+        out.flush();
+        out.close();
+        fileWriter.close();
 
     }
 
