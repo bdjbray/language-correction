@@ -35,7 +35,9 @@ public class Checker {
             add(normal2);
 
             resultArea= new JTextArea(40, 25);
-            add(resultArea);
+            JScrollPane scroll = new JScrollPane ( resultArea );
+            scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
+            add(scroll);
 
             normal.addActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent ae){
@@ -155,7 +157,7 @@ public class Checker {
     }
     public Map<String,Integer> CheckPhrases(Map<String,Integer> phrases,String dirName)throws IOException{ //check whether the phrase is in the phrase list
         for (String item:phrases.keySet()){
-            File phraseFile = new File(dirName + "commonPhrases.txt");
+            File phraseFile = new File(dirName + "Phrases.txt");
             BufferedReader in = new BufferedReader(new FileReader(phraseFile));
             String line;
             while ((line = in.readLine()) != null){
@@ -309,18 +311,20 @@ public class Checker {
             }
             phraseAverage=phraseAverage/phrases.size();
             score+=phraseAverage;
+            if (score>100)  //the suspicious should no larger than 100
+                score=100;
             collect.append("{\n");
-            collect.append("  sentences: {\n    "+userInput+":"+score+"\n");
+            collect.append("  sentences: {\n    ").append(userInput).append(":").append(score).append("\n");
             collect.append("  },\n");
             collect.append("  phrases : {\n");
             for (Map.Entry<String,Integer> entry:phrases.entrySet())
-                collect.append("   " + entry.getKey() + ":" + entry.getValue()+"\n");
+                collect.append("   ").append(entry.getKey()).append(":").append(entry.getValue()).append("\n");
             collect.append("  }\n");
             collect.append("}\n");
             score=0;   //update the score
             phrases.clear();
         }
-        signal2=1;
+        signal2=1;  //set to 1 when we already get result
         System.out.println(collect.toString());
     }
 }
