@@ -95,7 +95,7 @@ public static String filter(String filePath,int max) {
 * The installation guide is at part three of our INSTALL.txt 
 ## Work breakdown
 Dingjun Bian: worked on the checker, GUI and documentation  
-Yuhang He: worked on the checker
+Yuhang He: worked on the checker  
 Shiyang Hu: worked on the crawler and documentation  
 Dingchao Wei: worked on the crawler and documentation  
 Hanchen Zhang: helped both side,work on testing and documentation  
