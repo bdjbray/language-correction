@@ -35,7 +35,7 @@ the sentences we get from our crawler.We break the sentences into 2 or 3 word ph
 * GUI  
 We built a java GUI for the checker.At the landing page, you shall type or paste the directory to the file that you want to test.
 Then press `confirm` and `show result`, the result will be shown both at the text area in the GUI and the standard output. 
-### Description of the Implementation 
+### Features that the module already been implemented:
 * Checker -- Main Feature:  
 Check the grammar of all the sentences in the text file that the user want.  
 Show suspicious of all the sentences in the file, and the suspicious of phrases in the sentence.  
