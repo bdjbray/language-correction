@@ -63,9 +63,26 @@ variable `StartLink` and Specified the path and text filename in the `SaveLocati
 Demonstration of this code is based on the official website of Boston Government这名字最好更具体些: https://www.boston.gov/departments/parking-clerk/how-get-resident-parking-permit
 是只有这一个link吗？
 1. As the link is initialized, it first goes to an HTML parser that checks the validity of the link’s format. The parser contains a HashSet that stores the link. `Downloadpage`, `readtxt`, `htmlextract`, are followed to process a “raw paragraph” from the website. Detailed descriptions toward these function shall go to see the comments from 		`crawler.java`
-2. The `cutsentence` function tries to separate the sentence from the paragraph by identifying the capital letter, which should be optimized in the next term.
-3. Sentences being transferred to `output.txt`. The `filter`, in the end, grabs the output file and forms the `clause` text file that used for the checker unit
-Filter’s mechanism在这里还需要在解释细节一些,主要是为什么长度设为20
+2. The `cutsentence` function tries to separate the sentence from the paragraph by identifying the capital letter, which should be optimized in the next sprint.
+3. Sentences being transferred to `output.txt`. The `filter`, in the end, grabs the output file and forms the `clause` text file that used for the checker unit. The filter mainly filtered out short sentence and the length could also be user-defined based on the `max`:
+```
+public static String filter(String filePath,int max) {
+        StringBuilder result = new StringBuilder();
+        try {
+            InputStreamReader isr = new InputStreamReader(new FileInputStream(new File(filePath)),"UTF-8");
+            BufferedReader bfr = new BufferedReader(isr);
+            String lineTxt = null;
+            while ((lineTxt = bfr.readLine()) != null) {
+                if (lineTxt.length()>max)
+                {result.append(lineTxt).append("\n");}
+            }
+            bfr.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result.toString();
+    }
+```
 另外那个检索30条的地方还有点小混乱。。。
 
 ## Code
