@@ -41,10 +41,11 @@ Then press `confirm` and `show result`, the result will be shown both at the tex
 
 ### Features that the module already been implemented:
 
-* Checker -- Main Feature:  
-Check the grammar of all the sentences in the text file that the user want.  
+* Checker -- Main Feature:
+
+*Check the grammar of all the sentences in the text file that the user want.  
 Show suspicious of all the sentences in the file, and the suspicious of phrases in the sentence.  
-In a frontend Graphic User Interface, the checker taking the path of a text file as the input and listing suspicious phrases.
+In a frontend Graphic User Interface, the checker taking the path of a text file as the input and listing suspicious phrases.*
 
 Data Structure and Construction Mechanism:
 
@@ -58,7 +59,7 @@ Data Structure and Construction Mechanism:
 
 * Crawler -- Main Feature: 
 
-   *Crawler's main objective is indexing web content with formal, diversified linguistic content in order to serve the checker.*
+*Crawler's main objective is indexing web content with formal, diversified linguistic content in order to serve the checker.*
 
    1. Social Media Crawler:
    This crawler is derived from the twitter4j package. The main feature is Crawling (output.java) and regularizes (finaloutput.java) messages based on twitter, and storing formal phrases (Util.java). Currently, this crawler needs to be run and stop manually by clicking the running and stop button. A frontend GUI will upcoming later. </br></br>
