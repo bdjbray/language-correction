@@ -38,7 +38,7 @@ Then press `confirm` and `show result`, the result will be shown both at the tex
 * Crawler
 **Currently, txt file is the media that connect the crawler and checker that storing correct phrases.** It's not realistic to achieve both formality and diversity at the same time by using simple text file. Content in government agency officials and academic website is formal but comparatively weaker in vocabulary，whereas social media is in reverse. Therefore，**this language correction have two versions of checker that works separately to serve the checker.**
 
-
+---
 ### Features that the module already been implemented:
 
 * Checker -- Main Feature:
@@ -86,6 +86,7 @@ public static String filter(String filePath,int max) {
         return result.toString();
     }
 ``` 
+---
 ## Code
 * The Checker is in the main branch and the crawler is in the crawler branch.
 * For the checker, we have provided the two test files,they were in the TestFiles directory called largerTest.txt and simpleTest.txt
