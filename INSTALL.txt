@@ -27,8 +27,8 @@ Checker:
    forgot to capitalize the first character of a sentence, or type more than one spaces between two words and etc.
    Suspicions equal to 100 means the sentence is most suspicious. When equal to 0, we believe it is true.
 Crawler:
-1. There is no extra external libraries required for version 2
-2. For version 1, First, getting a developer account and apply for an API key.
+1. There is no extra external libraries required for version 2(in crawler branch)
+2. For version 1(in crawler_twitter branch), First, getting a developer account and apply for an API key.
     https://developer.twitter.com/en/docs/basics/getting-started
    Twitter4j is a opensource API. You can download the twitter4j-4.0.7.zip from http://twitter4j.org/en/ and add twitter4j-core-4.0.7.jar to your application classpath.
    Or you can just used maven to install twitter4j api, you can just modify the pom.xml to have required frontend source code as the hyperlink mentioned. 
