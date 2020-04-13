@@ -4,10 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.*;
 import java.io.*;
+import dataStructure.AVLTree;
 public class Checker {
     protected static String userInput, userInNoPunc;
     protected static int arraylength1, arraylength2;
     protected static int score;
+    protected AVLTree nounList = new AVLTree();
+    protected AVLTree verbList = new AVLTree();
+    protected AVLTree phraseList = new AVLTree();
     public Checker() {
         this.userInput = "";
         this.arraylength1 = 0;
@@ -53,6 +57,34 @@ public class Checker {
                 }
             });
         }
+
+    }
+
+    public void init_checker(String dirName) throws IOException {
+        // init nounList
+        File nounFile = new File(dirName + "nounList.txt"); //assign the noun file
+        BufferedReader in = new BufferedReader(new FileReader(nounFile));
+        String line;
+        while ((line = in.readLine()) != null){
+            nounList.root = nounList.insert(nounList.root, line);
+        }
+        in.close();
+
+        //init verbList
+        File verbFile = new File(dirName + "verbList.txt"); //assign the noun file
+        in = new BufferedReader(new FileReader(verbFile));
+        while ((line = in.readLine()) != null){
+            verbList.root = verbList.insert(verbList.root, line);
+        }
+        in.close();
+
+        //init phraseList
+        File phraseFile = new File(dirName + "Phrases.txt");
+        in = new BufferedReader(new FileReader(phraseFile));
+        while ((line = in.readLine()) != null){
+            phraseList.root = phraseList.insert(phraseList.root, line);
+        }
+        in.close();
 
     }
 
@@ -116,10 +148,17 @@ public class Checker {
         }
     }
 
+    public void checkDoubleUpper(String currentSentence){
+        for (int i=0;i<currentSentence.length()-1;i++){
+            if (Character.isUpperCase(currentSentence.charAt(i))&&(Character.isUpperCase(currentSentence.charAt(i+1))))
+                score+=10;  // to or more continuous uppercase characters
+        }
+    }
+
     public void CheckSpace(String userInArray) {
         for (int i = 0; i < userInArray.length()-1; i++){
             if (userInArray.charAt(i)==' ' && userInArray.charAt(i)==userInArray.charAt(i+1)) {
-                score+=10; //two much space between two words,-10
+                score+=10; //too much space between two words,-10
             }
         }
     }
@@ -141,6 +180,50 @@ public class Checker {
         }
     }
 
+    public Map<String,Integer> CheckCountriesPeople(String[] arr,String dirName,Map<String,Integer> phrases) throws IOException {
+        for (String item:arr){
+            File countryFile = new File(dirName + "Countries.txt");    //check whether the sentence contain country name
+            BufferedReader in = new BufferedReader(new FileReader(countryFile));  //or people's name
+            String line;
+            while ((line = in.readLine()) != null){
+                item=item.replaceAll("[.,?!]","");
+                if (line.equalsIgnoreCase(item)){
+                    phrases=HandleCountryName(line,item,arr,phrases);
+                    break;
+                }
+            }
+            in.close();
+
+            File phraseFile = new File(dirName + "names.txt");    //check whether the sentence contain country name
+            BufferedReader in2 = new BufferedReader(new FileReader(phraseFile));
+            while ((line = in2.readLine()) != null){
+                item=item.replaceAll("[.,?!]","");
+                if (line.equalsIgnoreCase(item)){
+                    phrases=HandleCountryName(line,item,arr,phrases);
+                    break;
+                }
+            }
+            in2.close();
+        }
+        return phrases;
+    }
+
+    public Map<String,Integer> HandleCountryName(String countryName,String nameInInput,String[] arr,Map<String,Integer> phrases){
+        LinkedList<String> containCountry=new LinkedList<>();
+        if (!Character.isUpperCase(nameInInput.charAt(0))){
+            score+=10;       //the first character of a Country or people's name should be upper case
+        }
+        for (String thePhrase:phrases.keySet()){
+            if (thePhrase.toLowerCase().contains(countryName.toLowerCase())) {
+                containCountry.add(thePhrase);
+            }
+        }
+        for (String item:containCountry){
+            phrases.remove(item);        // remove the phrases that contain country name or people's name
+        }
+        return phrases;
+    }
+
     public void CheckCompound(Object[] userInArray) {
         if (userInArray.length >= 15){
             int notAOBcount = 0;
@@ -157,54 +240,32 @@ public class Checker {
     }
     public Map<String,Integer> CheckPhrases(Map<String,Integer> phrases,String dirName)throws IOException{ //check whether the phrase is in the phrase list
         for (String item:phrases.keySet()){
-            File phraseFile = new File(dirName + "Phrases.txt");
-            BufferedReader in = new BufferedReader(new FileReader(phraseFile));
-            String line;
-            while ((line = in.readLine()) != null){
-                item=item.replaceAll("[.,?!]","");
-                if (line.equalsIgnoreCase(item)){
-                    phrases.replace(item,0);
-                    break;
-                }
+            item=item.replaceAll("[.,?!]","");
+            if(phraseList.find(phraseList.root,item)){
+                phrases.replace(item,0);
             }
-            in.close();
         }
         return phrases;
     }
 
+
     public void CheckNounVerb(Object[] userInArray, String dirName) throws IOException {
         int nounPlace = 0, verbPlace = 0;
         boolean nounFound = false, verbFound = false;
-        nounLoop:
         for (int i = 0; i < userInArray.length; i++){
             String currentNoun = (String) userInArray[i];
-
-            File nounFile = new File(dirName + "nounList.txt"); //assign the noun file
-            BufferedReader in = new BufferedReader(new FileReader(nounFile));
-            String line;
-            while ((line = in.readLine()) != null){
-                if (line.equalsIgnoreCase(currentNoun)){
-                    nounFound = true;
-                    nounPlace = (i);
-                    break nounLoop; //break out of for loop
-                }
+            if (nounList.find(nounList.root, currentNoun)) {
+                nounFound=true;
+                break;
             }
-            in.close();
         }
-        verbLoop:
+
         for (int i = 0; i < userInArray.length; i++){
             String currentVerb = (String) userInArray[i];
-            File verbFile = new File(dirName + "verbList.txt");//Assigns verb file
-            BufferedReader in = new BufferedReader(new FileReader(verbFile));
-            String line;
-            while ((line = in.readLine()) != null){
-                if (line.equalsIgnoreCase(currentVerb)){
-                    verbFound = true;
-                    verbPlace = (i);
-                    break verbLoop; //break out of for loop
-                }
+            if (verbList.find(verbList.root, currentVerb)) {
+                verbFound=true;
+                break;
             }
-            in.close();
         }
         if ((nounFound) && (verbFound)){ //if both were found:
             if (nounPlace > verbPlace){//check if noun didn't come first
@@ -255,9 +316,9 @@ public class Checker {
             String[] userInArray2 = userInput.split(""); //each character is an element
             String[] userInArray3 = userInput.split(" "); //each word is an element
             String userInArray4=userInput; //the raw input string
-            for (int i = 0, l = userInArray.length; i + 1 < l; i++)
+            for (int i = 0, l = userInArray3.length; i + 1 < l; i++)
                 phrases.put(userInArray[i] + " " + userInArray[i + 1], 100);  //add the phrases with length==2
-            for (int i = 0, l = userInArray.length; i + 3 < l; i++)
+            for (int i = 0, l = userInArray3.length; i + 3 < l; i++)
                 phrases.put(userInArray[i] + " " + userInArray[i + 1]+" "+userInArray[i+2],100); //add the phrases with length==3
             arraylength1 = userInArray.length;
             arraylength2 = userInArray2.length;
@@ -268,6 +329,7 @@ public class Checker {
             if (!dirObj.exists()){
                 dirObj.mkdir();
             }
+            c1.init_checker(dirName);
             c1.CheckNounVerb(userInArray, dirName);
             c1.CheckCompound(userInArray);
             if (!(userInArray.length == 0)){
@@ -288,6 +350,8 @@ public class Checker {
             c1.CheckLength(arraylength1);
             c1.sameWord(userInArray3);
             c1.CheckSpace(userInArray4);
+            c1.checkDoubleUpper(userInput);
+            phrases=c1.CheckCountriesPeople(userInArray3,dirName,phrases); // check whether the sentence contain a Country name or people's name
             phrases=c1.CheckPhrases(phrases,dirName);  //check whether the phrase is in the commonPhrase list
 
             int quoteCount = 0;
