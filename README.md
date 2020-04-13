@@ -17,7 +17,6 @@ We have wrote some code to avoid it, but due to time limitation there is still s
 ### Description of the Implementation
  
 
-### Features that the module already been implemented:
 
 * Checker  
 To guarantee the speed and correctness of the checker,the checker analysis the sentences in two main methods. 
