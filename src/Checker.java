@@ -30,7 +30,7 @@ public class Checker {
             super("checker");
             setLayout(new FlowLayout());
 
-            textField1=new JTextField("please choose the directory",20); //the textfield
+            textField1=new JTextField("please type or paste the path to the file",23); //the textfield
             add(textField1);
 
             normal=new JButton("confirm");  //the button to confirm
@@ -43,17 +43,22 @@ public class Checker {
             scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
             add(scroll);
 
-            normal.addActionListener(new ActionListener(){
+            normal.addActionListener(new ActionListener(){   // if 'confirm' clicked
                 public void actionPerformed(ActionEvent ae){
                     directory= textField1.getText();
                     signal=1;
+                    signal2=0;
+                    resultArea.setText("");
+                    collect.setLength(0);
                 }
             });
 
-            normal2.addActionListener(new ActionListener(){
+            normal2.addActionListener(new ActionListener(){  // if 'show result' clicked
                 public void actionPerformed(ActionEvent ae){
-                    if (signal2==1)
-                      resultArea.setText(collect.toString());
+                    if (signal2==1) {
+                        resultArea.setText(collect.toString());
+                        textField1.setText("");
+                    }
                 }
             });
         }
@@ -293,102 +298,104 @@ public class Checker {
         myGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myGUI.setSize(400,800);
         myGUI.setVisible(true);
+        while (true) {   // first time we received input or not first time
+            while (signal==0) {
+                Thread.sleep(1000);
+            }
 
-        while (signal==0){
-            Thread.sleep(1000);
+            Scanner sentence = new Scanner(new File(directory));
+            ArrayList<String> sentenceList = new ArrayList<String>();
+            while (sentence.hasNextLine()) {
+                sentenceList.add(sentence.nextLine());
+            }
+            sentence.close();
+            String[] sentenceArray = sentenceList.toArray(new String[sentenceList.size()]);
+            for (int r = 0; r < sentenceArray.length; r++) {
+                sentenceCollection = sentenceArray[r].split("(?<=[.!?])\\s*");
+            }
+
+            for (int index = 0; index < sentenceCollection.length; index++) {  //check the whole file
+                userInput = sentenceCollection[index];
+                userInNoPunc = userInput.replaceAll("[^a-zA-Z\\s]", "").replaceAll("\\s+", " ");
+                Map<String, Integer> phrases = new HashMap<>();  //used to store different phrases of a sentence
+                String[] userInArray = userInNoPunc.split(" "); //each word WITHOUT PUNCTUATION is an element
+                String[] userInArray2 = userInput.split(""); //each character is an element
+                String[] userInArray3 = userInput.split(" "); //each word is an element
+                String userInArray4 = userInput; //the raw input string
+                for (int i = 0, l = userInArray3.length; i + 1 < l; i++)
+                    phrases.put(userInArray[i] + " " + userInArray[i + 1], 100);  //add the phrases with length==2
+                for (int i = 0, l = userInArray3.length; i + 3 < l; i++)
+                    phrases.put(userInArray[i] + " " + userInArray[i + 1] + " " + userInArray[i + 2], 100); //add the phrases with length==3
+                arraylength1 = userInArray.length;
+                arraylength2 = userInArray2.length;
+
+                final String dir = System.getProperty("user.dir");
+                String dirName = dir + "/ReferenceFiles/";
+                File dirObj = new File(dirName);
+                if (!dirObj.exists()) {
+                    dirObj.mkdir();
+                }
+                c1.init_checker(dirName);
+                c1.CheckNounVerb(userInArray, dirName);
+                c1.CheckCompound(userInArray);
+                if (!(userInArray.length == 0)) {
+                    String firstWord = userInArray[0];
+                    c1.FirstChar(firstWord, arraylength1);
+
+                    String lastWord = userInArray3[userInArray3.length - 1];
+                    c1.LastChar(lastWord);
+                } else {
+                    System.out.println("The sentence has " + userInArray.length + " words, which isn't accepted.");
+                }
+
+                for (int i = 0; i < userInArray.length; i++) {
+                    String reallyVery = userInArray[i];
+                    c1.WeakWord(reallyVery, arraylength1);
+                }
+                c1.CheckLength(arraylength1);
+                c1.sameWord(userInArray3);
+                c1.CheckSpace(userInArray4);
+                c1.checkDoubleUpper(userInput);
+                phrases = c1.CheckCountriesPeople(userInArray3, dirName, phrases); // check whether the sentence contain a Country name or people's name
+                phrases = c1.CheckPhrases(phrases, dirName);  //check whether the phrase is in the commonPhrase list
+
+                int quoteCount = 0;
+                for (int i = 0; i < userInArray2.length; i++) {
+                    String quote = userInArray2[i];
+                    c1.CheckQuote(quote, quoteCount);
+                }
+
+                for (int i = 0; i < userInArray.length; i++) {
+                    String wordNum = userInArray[i];
+                    c1.CheckNums(wordNum);
+                }
+
+                for (int i = 0; i < userInArray.length; i++) {
+                    String aAn = userInArray[i];
+                    c1.CheckAandAN(aAn, userInArray, i);
+                }
+                int phraseAverage = 0;
+                for (int value : phrases.values()) {
+                    phraseAverage += value;
+                }
+                phraseAverage = phraseAverage / (2 * phrases.size());
+                score += phraseAverage;
+                if (score > 100)  //the suspicious should no larger than 100
+                    score = 100;
+                collect.append("{\n");
+                collect.append("  sentences: {\n    ").append(userInput).append(":").append(score).append("\n");
+                collect.append("  },\n");
+                collect.append("  phrases : {\n");
+                for (Map.Entry<String, Integer> entry : phrases.entrySet())
+                    collect.append("   ").append(entry.getKey()).append(":").append(entry.getValue()).append("\n");
+                collect.append("  }\n");
+                collect.append("}\n");
+                score = 0;   //update the score
+                phrases.clear();
+            }
+            signal2 = 1;  //set to 1 when we already get result
+            signal=0;
+            System.out.println(collect.toString());
         }
-        Scanner sentence = new Scanner(new File(directory));
-        ArrayList<String> sentenceList = new ArrayList<String>();
-        while (sentence.hasNextLine()) {
-            sentenceList.add(sentence.nextLine());
-        }
-        sentence.close();
-        String[] sentenceArray = sentenceList.toArray(new String[sentenceList.size()]);
-        for (int r=0;r<sentenceArray.length;r++) {
-            sentenceCollection = sentenceArray[r].split("(?<=[.!?])\\s*");
-        }
-
-        for (int index=0;index<sentenceCollection.length;index++) {  //check the whole file
-            userInput=sentenceCollection[index];
-            userInNoPunc = userInput.replaceAll("[^a-zA-Z\\s]", "").replaceAll("\\s+", " ");
-            Map<String,Integer> phrases=new HashMap<>();  //used to store different phrases of a sentence
-            String[] userInArray = userInNoPunc.split(" "); //each word WITHOUT PUNCTUATION is an element
-            String[] userInArray2 = userInput.split(""); //each character is an element
-            String[] userInArray3 = userInput.split(" "); //each word is an element
-            String userInArray4=userInput; //the raw input string
-            for (int i = 0, l = userInArray3.length; i + 1 < l; i++)
-                phrases.put(userInArray[i] + " " + userInArray[i + 1], 100);  //add the phrases with length==2
-            for (int i = 0, l = userInArray3.length; i + 3 < l; i++)
-                phrases.put(userInArray[i] + " " + userInArray[i + 1]+" "+userInArray[i+2],100); //add the phrases with length==3
-            arraylength1 = userInArray.length;
-            arraylength2 = userInArray2.length;
-
-            final String dir = System.getProperty("user.dir");
-            String dirName = dir + "/ReferenceFiles/";
-            File dirObj = new File(dirName);
-            if (!dirObj.exists()){
-                dirObj.mkdir();
-            }
-            c1.init_checker(dirName);
-            c1.CheckNounVerb(userInArray, dirName);
-            c1.CheckCompound(userInArray);
-            if (!(userInArray.length == 0)){
-                String firstWord = userInArray[0];
-                c1.FirstChar(firstWord, arraylength1);
-
-                String lastWord = userInArray3[userInArray3.length - 1];
-                c1.LastChar(lastWord);
-            }
-            else {
-                System.out.println("The sentence has " + userInArray.length + " words, which isn't accepted.");
-            }
-
-            for (int i = 0; i < userInArray.length; i++){
-                String reallyVery = userInArray[i];
-                c1.WeakWord(reallyVery,arraylength1);
-            }
-            c1.CheckLength(arraylength1);
-            c1.sameWord(userInArray3);
-            c1.CheckSpace(userInArray4);
-            c1.checkDoubleUpper(userInput);
-            phrases=c1.CheckCountriesPeople(userInArray3,dirName,phrases); // check whether the sentence contain a Country name or people's name
-            phrases=c1.CheckPhrases(phrases,dirName);  //check whether the phrase is in the commonPhrase list
-
-            int quoteCount = 0;
-            for (int i = 0; i < userInArray2.length; i++){
-                String quote = userInArray2[i];
-                c1.CheckQuote(quote, quoteCount);
-            }
-
-            for (int i = 0; i < userInArray.length; i++){
-                String wordNum = userInArray[i];
-                c1.CheckNums(wordNum);
-            }
-
-            for (int i = 0; i < userInArray.length; i++){
-                String aAn = userInArray[i];
-                c1.CheckAandAN(aAn, userInArray, i);
-            }
-            int phraseAverage=0;
-            for (int value:phrases.values()){
-                phraseAverage+=value;
-            }
-            phraseAverage=phraseAverage/phrases.size();
-            score+=phraseAverage;
-            if (score>100)  //the suspicious should no larger than 100
-                score=100;
-            collect.append("{\n");
-            collect.append("  sentences: {\n    ").append(userInput).append(":").append(score).append("\n");
-            collect.append("  },\n");
-            collect.append("  phrases : {\n");
-            for (Map.Entry<String,Integer> entry:phrases.entrySet())
-                collect.append("   ").append(entry.getKey()).append(":").append(entry.getValue()).append("\n");
-            collect.append("  }\n");
-            collect.append("}\n");
-            score=0;   //update the score
-            phrases.clear();
-        }
-        signal2=1;  //set to 1 when we already get result
-        System.out.println(collect.toString());
     }
 }
