@@ -26,6 +26,7 @@ public class Checker {
         private JTextField textField1;
         private JTextArea resultArea;
         JFrame frame = new JFrame("Warning");
+        JFrame frame2 = new JFrame("Error");
 
         public simpleGUI(){
             super("checker");
@@ -47,10 +48,20 @@ public class Checker {
             normal.addActionListener(new ActionListener(){   // if 'confirm' clicked
                 public void actionPerformed(ActionEvent ae){
                     directory= textField1.getText();
-                    signal=1;
-                    signal2=0;
-                    resultArea.setText("");
-                    collect.setLength(0);
+                    try{
+                        Scanner testScanner = new Scanner(new File(directory)); // see if it is a right path
+                        String testStr=testScanner.nextLine();
+                        signal=1;
+                        signal2=0;
+                        resultArea.setText("");
+                        collect.setLength(0);
+                    }catch (Exception e){         // error handling
+                        JOptionPane.showMessageDialog(frame2,
+                                "Please type or paste the path to the file!\nYou may use the test file that I provided.\nExample" +
+                                        " path (Mac):/Users/Brian/Downloads/group11/TestFiles/simpleTest.txt",
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             });
 
