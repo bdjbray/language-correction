@@ -25,6 +25,7 @@ public class Checker {
         private JButton normal2;
         private JTextField textField1;
         private JTextArea resultArea;
+        JFrame frame = new JFrame("Warning");
 
         public simpleGUI(){
             super("checker");
@@ -58,6 +59,12 @@ public class Checker {
                     if (signal2==1) {
                         resultArea.setText(collect.toString());
                         textField1.setText("");
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(frame,
+                                "The checker is still working, please try again later!",
+                                "Warning",
+                                JOptionPane.WARNING_MESSAGE);
                     }
                 }
             });
