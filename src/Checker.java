@@ -21,9 +21,13 @@ public class Checker {
 
 
     static class simpleGUI extends JFrame {  //a simple java GUI
+        private JLabel infoText1;
+        private  JLabel infoText2;
         private JButton normal;
         private JButton normal2;
+        private JButton normal3; // button works for URL crawler
         private JTextField textField1;
+        private JTextField textField2; //url link
         private JTextArea resultArea;
         JFrame frame = new JFrame("Warning");
         JFrame frame2 = new JFrame("Error");
@@ -32,18 +36,34 @@ public class Checker {
             super("checker");
             setLayout(new FlowLayout());
 
-            textField1=new JTextField("please type or paste the path to the file",23); //the textfield
+            infoText1=new JLabel("CHECKER PART:");
+            infoText1.setToolTipText("please type or paste the path to the text field. ");
+            add(infoText1);
+
+            textField1=new JTextField("please type or paste the path to the file",25); //the textfield
             add(textField1);
 
             normal=new JButton("confirm");  //the button to confirm
             add(normal);
+
+
             normal2=new JButton("show result");  //the button to show result
             add(normal2);
 
-            resultArea= new JTextArea(40, 25);
+            resultArea= new JTextArea(30, 35);
             JScrollPane scroll = new JScrollPane ( resultArea );
             scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
             add(scroll);
+
+            infoText2=new JLabel("CRAWLER PART:");
+            infoText2.setToolTipText("please type or paste the URL to the text field.\nYou may use the files that I provided.");
+            add(infoText2);
+
+            textField2=new JTextField("please type or paste the URL link",23); //the textfield
+            add(textField2);
+
+            normal3=new JButton("Start URL Crawler");
+            add(normal3);
 
             normal.addActionListener(new ActionListener(){   // if 'confirm' clicked
                 public void actionPerformed(ActionEvent ae){
@@ -57,7 +77,7 @@ public class Checker {
                         collect.setLength(0);
                     }catch (Exception e){         // error handling
                         JOptionPane.showMessageDialog(frame2,
-                                "Please type or paste the path to the file!\nYou may use the test file that I provided.\nExample" +
+                                "Please type or paste the path to the text field!\nYou may use the test file that I provided.\nExample" +
                                         " path (Mac):/Users/Brian/Downloads/group11/TestFiles/simpleTest.txt",
                                 "Error",
                                 JOptionPane.ERROR_MESSAGE);
@@ -79,8 +99,62 @@ public class Checker {
                     }
                 }
             });
+
+            normal3.addActionListener(new ActionListener(){  // if 'start url crawler' clicked
+                public void actionPerformed(ActionEvent ae){
+                    int i = 10, a = 0;
+                    urlLink = textField2.getText();
+                    while (i != 0 && a != 1) {
+                        try {
+                            crawler.crawling(urlLink);
+                            a = 1;
+                        }
+                        catch (IndexOutOfBoundsException | IOException e) {
+                            e.printStackTrace();
+                            JOptionPane.showMessageDialog(frame2,
+                                    "Indexing error:\nTo Fix it, Simply go click the crawler again\n" +
+                                            "until further information show success",
+                                    "Error",
+                                    JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                    copyfile("new_three_pig.txt", "ReferenceFiles/Phrases.txt");
+                    JOptionPane.showMessageDialog(frame,
+                            "Job Done!\nThe text that the crawler get have been added to checker's corpus",
+                            "Finish",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    try {
+                        PrintWriter writer = new PrintWriter("new_three_pig.txt");
+                        writer.print("");
+                        writer.close();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
 
+    }
+
+    public static void copyfile(String file1, String file2) {
+
+        try {
+            FileReader fr = new FileReader(file1);
+            BufferedReader br = new BufferedReader(fr);
+            FileWriter fw = new FileWriter(file2, true);
+            String s;
+
+            while ((s = br.readLine()) != null) { // read a line
+                fw.write(s+"\n"); // write to output file
+                fw.flush();
+            }
+            br.close();
+            fw.close();
+            System.out.println("file copied");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void init_checker(String dirName) throws IOException {
@@ -271,7 +345,6 @@ public class Checker {
         return phrases;
     }
 
-
     public void CheckNounVerb(Object[] userInArray, String dirName) throws IOException {
         int nounPlace = 0, verbPlace = 0;
         boolean nounFound = false, verbFound = false;
@@ -305,16 +378,21 @@ public class Checker {
             score+=30; //no verb found
         }
     }
+
+
     static int signal=0;  //set to 1, after we get the directory
     static int signal2=0;  //set to 1,after we get the full result
     static String directory="";
+    static String urlLink="";
     static Checker c1 = new Checker();
     static String[] sentenceCollection;
     static StringBuilder collect=new StringBuilder();  //collect the output
+
+
     public static void main(String[] args) throws IOException, InterruptedException {
         simpleGUI myGUI = new simpleGUI();
         myGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        myGUI.setSize(400,800);
+        myGUI.setSize(500,650);
         myGUI.setVisible(true);
         while (true) {   // first time we received input or not first time
             while (signal==0) {
