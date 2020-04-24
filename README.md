@@ -67,9 +67,9 @@ Data Structure and Construction Mechanism:
    This crawler is derived from the twitter4j package. The main feature is Crawling (output.java) and regularizes (finaloutput.java) messages based on twitter, and storing formal phrases (Util.java). Currently, this crawler needs to be run and stop manually by clicking the running and stop button. A frontend GUI will upcoming later. </br></br>
 
    2. URL-based Crawler(in crawler branch):
-   For this crawler, user can choose their optional website. As the link is initialized, it first goes to an HTML parser that checks the validity of the link’s format. The parser contains a HashSet that stores the link. 
+   For this crawler, user can choose their optional website. As the link is initialized, it first goes to an HTML parser that checks the validity of the link’s format. The parser contains a HashSet and a local file "websites.txt" that stores the link. 
    `Downloadpage`, `readtxt`, `htmlextract`, are followed to process a “raw paragraph” from the website. Detailed descriptions toward these function shall go to see the comments from `crawler.java`. The `cutsentence` function tries to separate the sentence from the paragraph by identifying the capital letter, which should be optimized in the next sprint.
-   Sentences being transferred to `output.txt`. The `filter`, in the end, grabs the output file and forms the `clause` text file that used for the checker unit. The filter mainly filtered out short sentence and the length could also be user-defined based on the `max`:
+   Sentences being transferred to `clause.txt`. The `filter`, in the end, grabs the output file and forms the `clause` text file that used for the checker unit. The filter mainly filtered out short sentence and the length could also be user-defined based on the `max`:
 ```
 public static String filter(String filePath,int max) {
         StringBuilder result = new StringBuilder();
