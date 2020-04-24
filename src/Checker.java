@@ -21,9 +21,13 @@ public class Checker {
 
 
     static class simpleGUI extends JFrame {  //a simple java GUI
+        private JLabel infoText1;
+        private  JLabel infoText2;
         private JButton normal;
         private JButton normal2;
+        private JButton normal3; // button works for URL crawler
         private JTextField textField1;
+        private JTextField textField2; //url link
         private JTextArea resultArea;
         JFrame frame = new JFrame("Warning");
         JFrame frame2 = new JFrame("Error");
@@ -32,18 +36,37 @@ public class Checker {
             super("checker");
             setLayout(new FlowLayout());
 
-            textField1=new JTextField("please type or paste the path to the file",23); //the textfield
+            infoText1=new JLabel("CHECKER PART:");
+            infoText1.setToolTipText("please type or paste the path to the text field. ");
+            add(infoText1);
+
+            textField1=new JTextField("please type or paste the path to the file",25); //the textfield
             add(textField1);
 
             normal=new JButton("confirm");  //the button to confirm
             add(normal);
+
+
             normal2=new JButton("show result");  //the button to show result
             add(normal2);
 
-            resultArea= new JTextArea(40, 25);
+            resultArea= new JTextArea(30, 35);
             JScrollPane scroll = new JScrollPane ( resultArea );
             scroll.setVerticalScrollBarPolicy ( ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS );
+            resultArea.setToolTipText(" 0 means not suspicious\n 100 means most suspicious");
             add(scroll);
+
+            infoText2=new JLabel("CRAWLER PART:");
+            infoText2.setToolTipText("please type or paste the URL to the text field.\nYou may use the files that I provided.");
+            add(infoText2);
+
+            textField2=new JTextField("please type or paste the URL link",23); //the textfield
+            add(textField2);
+
+            normal3=new JButton("Start URL Crawler");
+            add(normal3);
+
+
 
             normal.addActionListener(new ActionListener(){   // if 'confirm' clicked
                 public void actionPerformed(ActionEvent ae){
@@ -57,7 +80,7 @@ public class Checker {
                         collect.setLength(0);
                     }catch (Exception e){         // error handling
                         JOptionPane.showMessageDialog(frame2,
-                                "Please type or paste the path to the file!\nYou may use the test file that I provided.\nExample" +
+                                "Please type or paste the path to the text field!\nYou may use the test file that I provided.\nExample" +
                                         " path (Mac):/Users/Brian/Downloads/group11/TestFiles/simpleTest.txt",
                                 "Error",
                                 JOptionPane.ERROR_MESSAGE);
@@ -79,8 +102,77 @@ public class Checker {
                     }
                 }
             });
+
+            normal3.addActionListener(new ActionListener(){  // if 'start url crawler' clicked
+                public void actionPerformed(ActionEvent ae){
+                    int i = 10, a = 0;
+                    urlLink = textField2.getText();
+                    while (i != 0 && a != 1) {
+                        try {
+                            crawler.crawling(urlLink);
+                            a = 1;     // set to 1 when it is a valid url
+                        }
+                        catch (IndexOutOfBoundsException | IOException e) {
+                            e.printStackTrace();
+                            i=0;     // set to 0 when there is a error
+                            JOptionPane.showMessageDialog(frame2,
+                                    "Indexing error:\n Please use a valid URL and try again." ,
+                                    "Error",
+                                    JOptionPane.ERROR_MESSAGE);
+                        }
+                    }
+                    //StringBuilder sb=new StringBuilder();
+                    if (i!=0) {
+                        copyfile("new_three_pig.txt", "ReferenceFiles/Phrases.txt");
+                        //try(BufferedReader br =new BufferedReader((new FileReader("new_three_pig.txt")))){
+                        //    String line;
+
+                          //  while ((line=br.readLine())!=null){
+                           //     sb.append(line);
+                            //    sb.append("\n");
+                            //}
+                        //} catch (IOException e) {
+                         //   e.printStackTrace();
+                        //}
+                        //resultArea.setText(sb.toString());
+                        JOptionPane.showMessageDialog(frame,
+                                "Job Done!\nThe text that the crawler get have also been added to checker's corpus",
+                                "Finish",
+                                JOptionPane.INFORMATION_MESSAGE);
+
+                        try {
+                            PrintWriter writer = new PrintWriter("new_three_pig.txt");
+                            writer.print("");
+                            writer.close();
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
         }
 
+    }
+
+    public static void copyfile(String file1, String file2) {
+
+        try {
+            FileReader fr = new FileReader(file1);
+            BufferedReader br = new BufferedReader(fr);
+            FileWriter fw = new FileWriter(file2, true);
+            String s;
+
+            while ((s = br.readLine()) != null) { // read a line
+                fw.write(s+"\n"); // write to output file
+                fw.flush();
+            }
+            br.close();
+            fw.close();
+            System.out.println("file copied");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public void init_checker(String dirName) throws IOException {
@@ -271,7 +363,6 @@ public class Checker {
         return phrases;
     }
 
-
     public void CheckNounVerb(Object[] userInArray, String dirName) throws IOException {
         int nounPlace = 0, verbPlace = 0;
         boolean nounFound = false, verbFound = false;
@@ -305,16 +396,48 @@ public class Checker {
             score+=30; //no verb found
         }
     }
+
+
     static int signal=0;  //set to 1, after we get the directory
     static int signal2=0;  //set to 1,after we get the full result
     static String directory="";
+    static String urlLink="";
     static Checker c1 = new Checker();
     static String[] sentenceCollection;
     static StringBuilder collect=new StringBuilder();  //collect the output
+
+
     public static void main(String[] args) throws IOException, InterruptedException {
         simpleGUI myGUI = new simpleGUI();
+        JMenuBar menubar = new JMenuBar();
+        JMenu menu = new JMenu("Help");
+        JMenuItem use = new JMenuItem("How to use the app");
+        menu.add(use);
+        use.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "To use the checker, you should type or " +
+                                "paste the path to the test file to the text field.\nThen click 'confirm' and 'show result'.\n" +
+                                " The file must be a .txt file, you may use the file we provided." +
+                                "(largerTest.txt and simpleTest.txt)\n Example path (mac):/Users/Brian/Downloads/group11/TestFiles/simpleTest.txt \nTo" +
+                                " use the crawler, you should paste or type a valid URL to the text field.\n" +
+                                "Then click 'Start URL Crawler'.\n Example URL:https://en.wikipedia.org/wiki/Boston \n" +
+                                "The result of the crawler will not be shown in the UI, it will be added to the checker's corpus.",
+                        "About", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+        JMenuItem understand = new JMenuItem("Understand the scores");
+        menu.add(understand);
+        understand.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "For a sentence, if the score is close to 0," +
+                        " means we believe it is not suspicious, close to 100 means most suspicious.\n" +
+                        "When a phrase's score equal to 100, it might be wrong.\n", "About", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+        menubar.add(menu);
+        myGUI.setJMenuBar(menubar);
         myGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        myGUI.setSize(400,800);
+        myGUI.setSize(500,670);
         myGUI.setVisible(true);
         while (true) {   // first time we received input or not first time
             while (signal==0) {
