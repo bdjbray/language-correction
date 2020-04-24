@@ -88,7 +88,8 @@ public static String filter(String filePath,int max) {
         return result.toString();
     }
 ``` 
-
+Finally, the clause is used to process 2 or 3 word-length of data into the dictionary file.
+If the program terminates, can let the crawler section run again, and the new generated words would still be added to the existing dictionary.
 
 ### Combine these two parts
 We have combined the two parts, the crawler crawls through web pages and add the processed data to the corpus automatically.  
