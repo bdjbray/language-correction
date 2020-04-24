@@ -119,26 +119,25 @@ public class Checker {
                                     "Indexing error:\n Please use a valid URL and try again." ,
                                     "Error",
                                     JOptionPane.ERROR_MESSAGE);
+                            textField2.setText("");
                         }
                     }
                     //StringBuilder sb=new StringBuilder();
                     if (i!=0) {
-                        copyfile("new_three_pig.txt", "ReferenceFiles/Phrases.txt");
-                        //try(BufferedReader br =new BufferedReader((new FileReader("new_three_pig.txt")))){
-                        //    String line;
-
-                          //  while ((line=br.readLine())!=null){
-                           //     sb.append(line);
-                            //    sb.append("\n");
-                            //}
-                        //} catch (IOException e) {
-                         //   e.printStackTrace();
-                        //}
-                        //resultArea.setText(sb.toString());
+                        copyfile("new_three_pig.txt", "ReferenceFiles/rawPhrases.txt");
+                        final String dir = System.getProperty("user.dir");
+                        String file1= dir + "/ReferenceFiles/rawPhrases.txt";
+                        String file2= dir + "/ReferenceFiles/Phrases.txt";
+                        try {
+                            crawlerTextHandler.textHandler(file1,file2);  //remove duplicate
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                         JOptionPane.showMessageDialog(frame,
-                                "Job Done!\nThe text that the crawler get have also been added to checker's corpus",
+                                "Job Done!\nThe text that the crawler get have been added to checker's corpus",
                                 "Finish",
                                 JOptionPane.INFORMATION_MESSAGE);
+                        textField2.setText("");
 
                         try {
                             PrintWriter writer = new PrintWriter("new_three_pig.txt");

@@ -1,5 +1,3 @@
-The Checker part:
-
 PART ONE Pre-conditions:
 We have combined the two parts in the master branch.
 Combined,Checker:
@@ -8,8 +6,8 @@ Combined,Checker:
    We used intellij to develop the app, so using intellij to check our program is recommended.
    But using any other IDE for java should also be fine.
 Crawler:
-   Could be same as checker, but if you use any other IDE, MAVEN is a recommended package which could save many processing
-   from the command window.
+   Most pre-conditions are same as checker, but if you use any other IDE, MAVEN is a recommended package which could save many processing
+   from the command window. For checker version 1 (twitter-api included), java 13 is required.
 
 PART TWO Supporting files:
 Checker:
@@ -52,7 +50,7 @@ PART THREE Execution:
 
 We have combined the checker and the crawler in the master branch.
 
-Combined:
+Combined (Final Version):
 1. cd 'the directory you want to store the project'
 2. git clone https://agile.bu.edu/bitbucket/scm/ep/group11.git
 3. Open your intellij IDE or other IDE support java.

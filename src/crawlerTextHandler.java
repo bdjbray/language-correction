@@ -3,9 +3,7 @@ import java.util.*;
 
 public class crawlerTextHandler {
 
-    public static void main(String[] args) throws IOException {
-        String dir1="";
-        String dir2="";
+    public static void textHandler(String dir1, String dir2) throws IOException {
         FileReader fileReader = new FileReader(dir1);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String inputLine;
@@ -31,5 +29,3 @@ public class crawlerTextHandler {
     }
 
 }
-
-
