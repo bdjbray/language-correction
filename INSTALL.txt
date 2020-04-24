@@ -1,7 +1,8 @@
 The Checker part:
 
 PART ONE Pre-conditions:
-Checker:
+We have combined the two parts in the master branch.
+Combined,Checker:
    There is no specific requirements for hardware.For software, only java 8 or above is required.
    You do not need to download any special packages for the checker.
    We used intellij to develop the app, so using intellij to check our program is recommended.
@@ -27,11 +28,11 @@ Checker:
    forgot to capitalize the first character of a sentence, or type more than one spaces between two words and etc.
    Suspicions equal to 100 means the sentence is most suspicious. When equal to 0, we believe it is true.
 Crawler:
-1. There is no extra external libraries required for version 2(in crawler branch)
-2. For version 1(in crawler_twitter branch), First, getting a developer account and apply for an API key.
+1. There is no extra external libraries required for version 2(in crawler1 branch)
+2. For version 1(in crawler branch), First, getting a developer account and apply for an API key.
     https://developer.twitter.com/en/docs/basics/getting-started
    Twitter4j is a opensource API. You can download the twitter4j-4.0.7.zip from http://twitter4j.org/en/ and add twitter4j-core-4.0.7.jar to your application classpath.
-   Or you can just used maven to install twitter4j api, you can just modify the pom.xml to have required frontend source code as the hyperlink mentioned. 
+   Or you can just used maven to install twitter4j api, you can just modify the pom.xml to have required frontend source code as the hyperlink mentioned.
    (In github or bitbucket this file is already included so or you need to do is to install maven.) Plus, use maven to install twitter4j is recomended.
 3.	Crawlers are used to crawl the English text in the url.There are two ways: for a simple given url,
     get the information; given a starting url and the crawling depth, it will start from the starting url,
@@ -46,19 +47,37 @@ Crawler:
     the required crawling depth.
 
 
+
 PART THREE Execution:
-Checker:
+
+We have combined the checker and the crawler in the master branch.
+
+Combined:
 1. cd 'the directory you want to store the project'
 2. git clone https://agile.bu.edu/bitbucket/scm/ep/group11.git
 3. Open your intellij IDE or other IDE support java.
 4. Open the project in IDE.
 5. Setup SDK for the project.
-6. go to src->Checker  and run the project.
+6. go to src->Checker  and run the project.(If it can't run, please check the troubleshooting below or contact any one of us)
 7. Now you should have seen an java gui.
-8. Type or paste the directory of the (.txt)test file to the text field.(e.i. /Users/brayb/Downloads/the_check/TestFiles/simpleTest.txt)
-   (we recommend you to choose the test file we provide(TestFile/simpleTest.txt) to you first, and then run your own test file)
+8. If you want to check the checker, please type or paste the path to the (.txt) test file to the text field.
+   (Example path (MAC): /Users/Brian/Downloads/the_check/TestFiles/simpleTest.txt)
+   (we recommend you to choose the test file we provide(TestFile/simpleTest.txt and largerTest.txt ) to you first, and then run your own test file)
 9. Press 'confirm' and 'show result' to see the result.
    (you can check the result both in the GUI or in the standard output)
+10. If you want to check the crawler, simply paste or type a valid URL to the text field and click 'Start URL Crawler'
+   (Example URL:https://en.wikipedia.org/wiki/Boston)
+
+Troubleshooting:
+1.If the IDE tells you that 'Cannot start compilation: the output path is not specified for module...'
+  Please got to File->Project Structure->Project Settings->Project.
+  You will see a part to let you specify the compiler output,please select the module called 'out'.
+2.If there is no run option after you specify the SDK,
+   please right click the src module, Mark Directory As->Sources Root
+
+
+
+
 
 Crawler Version 1:
 1. cd 'the directory you want to store the crawler'
@@ -98,6 +117,11 @@ Crawler Version 2:
 3. Open your intelliJ IDE or other IDE support java.
 4. Go to file->new->project from existing source to import a project.
 5. Setup SDK for the project.
-6. go to src folder and open the crawler.java, Fill in the link URL you want, set the crawling depth n in main function and create the txt file with specified path. 
+6. go to src folder and open the crawler.java, Fill in the link URL you want, and create the txt file with specified path.
 7. check whether the file you created matches the path being specified above.
 7. Run the crawler.java
+
+If you have any question about the Checker, please contact:
+Dingjun Bian(braybian@bu.edu) or Yuhang He or Hanchen Zhang(hczhang@bu.edu)
+If you have any question about the Crawler, please contact:
+Dingchao Wei(wdcysl@bu.edu) or Shiyang Hu(shiyangh@bu.edu) or Hanchen Zhang(hczhang@bu.edu)
