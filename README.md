@@ -88,6 +88,8 @@ public static String filter(String filePath,int max) {
         return result.toString();
     }
 ``` 
+
+
 ### Combine these two parts
 We have combined the two parts, the crawler crawls through web pages and add the processed data to the corpus automatically.  
 The checker use the data from the corpus to check the the sentences and phrases.  
